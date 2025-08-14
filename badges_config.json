@@ -1,0 +1,151 @@
+{
+  "accuracy_badges": {
+    "Perfect Score": {
+      "threshold": 100,
+      "icon": "\ud83c\udfc6",
+      "description": "Score 100% on any quiz",
+      "points": 200
+    },
+    "Excellence": {
+      "threshold": 90,
+      "icon": "\u2b50",
+      "description": "Score 90%+ on a quiz",
+      "points": 100
+    },
+    "Good Job": {
+      "threshold": 80,
+      "icon": "\ud83d\udc4d",
+      "description": "Score 80%+ on a quiz",
+      "points": 50
+    },
+    "Getting There": {
+      "threshold": 70,
+      "icon": "\ud83d\udcc8",
+      "description": "Score 70%+ on a quiz",
+      "points": 25
+    }
+  },
+  "subject_badges": {
+    "Math Wizard": {
+      "subject": "mathematics",
+      "threshold": 5,
+      "icon": "\ud83e\uddee",
+      "description": "Complete 5 math quizzes",
+      "points": 150
+    },
+    "Science Genius": {
+      "subject": "science",
+      "threshold": 5,
+      "icon": "\ud83d\udd2c",
+      "description": "Complete 5 science quizzes",
+      "points": 150
+    },
+    "History Buff": {
+      "subject": "history",
+      "threshold": 5,
+      "icon": "\ud83d\udcda",
+      "description": "Complete 5 history quizzes",
+      "points": 150
+    },
+    "Language Master": {
+      "subject": "language",
+      "threshold": 5,
+      "icon": "\ud83d\udcdd",
+      "description": "Complete 5 language quizzes",
+      "points": 150
+    },
+    "Bio Expert": {
+      "subject": "biology",
+      "threshold": 3,
+      "icon": "\ud83c\udf3f",
+      "description": "Complete 3 biology quizzes",
+      "points": 100
+    },
+    "Physics Pro": {
+      "subject": "physics",
+      "threshold": 3,
+      "icon": "\u269b\ufe0f",
+      "description": "Complete 3 physics quizzes",
+      "points": 100
+    },
+    "Chemistry Champion": {
+      "subject": "chemistry",
+      "threshold": 3,
+      "icon": "\ud83e\uddea",
+      "description": "Complete 3 chemistry quizzes",
+      "points": 100
+    }
+  },
+  "streak_badges": {
+    "On Fire": {
+      "streak": 5,
+      "icon": "\ud83d\udd25",
+      "description": "5-day study streak",
+      "points": 100
+    },
+    "Unstoppable": {
+      "streak": 10,
+      "icon": "\ud83d\udcaa",
+      "description": "10-day study streak",
+      "points": 250
+    },
+    "Legend": {
+      "streak": 20,
+      "icon": "\ud83d\udc51",
+      "description": "20-day study streak",
+      "points": 500
+    }
+  },
+  "speed_badges": {
+    "Lightning Fast": {
+      "time_threshold": 30,
+      "icon": "\u26a1",
+      "description": "Complete quiz in under 30 seconds",
+      "points": 75
+    },
+    "Quick Thinker": {
+      "time_threshold": 60,
+      "icon": "\ud83c\udfc3",
+      "description": "Complete quiz in under 1 minute",
+      "points": 50
+    },
+    "Speedy": {
+      "time_threshold": 120,
+      "icon": "\ud83d\ude80",
+      "description": "Complete quiz in under 2 minutes",
+      "points": 25
+    }
+  },
+  "special_badges": {
+    "First Steps": {
+      "condition": "first_quiz",
+      "icon": "\ud83c\udfaf",
+      "description": "Complete your first quiz",
+      "points": 50
+    },
+    "Comeback Kid": {
+      "condition": "improvement",
+      "icon": "\ud83d\udcca",
+      "description": "Improve score by 20%+",
+      "points": 100
+    },
+    "Night Owl": {
+      "condition": "late_study",
+      "icon": "\ud83e\udd89",
+      "description": "Study after 10 PM",
+      "points": 25
+    },
+    "Early Bird": {
+      "condition": "early_study",
+      "icon": "\ud83d\udc26",
+      "description": "Study before 7 AM",
+      "points": 25
+    },
+    "Weekend Warrior": {
+      "condition": "weekend_study",
+      "icon": "\u2694\ufe0f",
+      "description": "Study on weekends",
+      "points": 50
+    }
+  }
+}

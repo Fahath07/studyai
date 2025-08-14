@@ -1,0 +1,47 @@
+============================================================
+StudyMate - General Chatbot Conversation
+============================================================
+Session Start: 2025-08-13 22:40:16
+Total Messages: 10
+Export Time: 2025-08-13 22:40:16
+
+Message 1 - 👤 User
+Time: 2025-08-13 22:40:16
+Content: Hi there!
+----------------------------------------
+Message 2 - 🤖 Assistant (SimulatedAI)
+Time: 2025-08-13 22:40:16
+Content: This is a simulated response to message 1: 'Hi there!'
+----------------------------------------
+Message 3 - 👤 User
+Time: 2025-08-13 22:40:16
+Content: What's the weather like?
+----------------------------------------
+Message 4 - 🤖 Assistant (SimulatedAI)
+Time: 2025-08-13 22:40:16
+Content: This is a simulated response to message 2: 'What's the weather like?'
+----------------------------------------
+Message 5 - 👤 User
+Time: 2025-08-13 22:40:16
+Content: Can you help me with math?
+----------------------------------------
+Message 6 - 🤖 Assistant (SimulatedAI)
+Time: 2025-08-13 22:40:16
+Content: This is a simulated response to message 3: 'Can you help me with math?'
+----------------------------------------
+Message 7 - 👤 User
+Time: 2025-08-13 22:40:16
+Content: What's 2 + 2?
+----------------------------------------
+Message 8 - 🤖 Assistant (SimulatedAI)
+Time: 2025-08-13 22:40:16
+Content: This is a simulated response to message 4: 'What's 2 + 2?'
+----------------------------------------
+Message 9 - 👤 User
+Time: 2025-08-13 22:40:16
+Content: Thanks for your help!
+----------------------------------------
+Message 10 - 🤖 Assistant (SimulatedAI)
+Time: 2025-08-13 22:40:16
+Content: This is a simulated response to message 5: 'Thanks for your help!'
+----------------------------------------

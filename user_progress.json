@@ -1,0 +1,102 @@
+{
+  "ab401898e6eaf38c31bd7f310c68ac23": {
+    "total_points": 370,
+    "level": 1,
+    "current_streak": 1,
+    "best_streak": 1,
+    "quizzes_completed": 2,
+    "total_questions_answered": 10,
+    "correct_answers": 2,
+    "badges_earned": [
+      {
+        "name": "Lightning Fast",
+        "icon": "\u26a1",
+        "description": "Complete quiz in under 30 seconds",
+        "points": 75,
+        "category": "speed"
+      },
+      {
+        "name": "Quick Thinker",
+        "icon": "\ud83c\udfc3",
+        "description": "Complete quiz in under 1 minute",
+        "points": 50,
+        "category": "speed"
+      },
+      {
+        "name": "Speedy",
+        "icon": "\ud83d\ude80",
+        "description": "Complete quiz in under 2 minutes",
+        "points": 25,
+        "category": "speed"
+      },
+      {
+        "name": "First Steps",
+        "icon": "\ud83c\udfaf",
+        "description": "Complete your first quiz",
+        "points": 50,
+        "category": "special"
+      }
+    ],
+    "quiz_history": [],
+    "subject_stats": {
+      "General Knowledge": {
+        "quizzes": 2,
+        "best_accuracy": 20.0,
+        "total_points": 170
+      }
+    },
+    "last_activity": "2025-08-13",
+    "rank": "Apprentice Scholar \ud83c\udf1f",
+    "achievements": []
+  },
+  "acf1bce1dd96b6affd2801beced7d9d5": {
+    "total_points": 1530,
+    "level": 1,
+    "current_streak": 1,
+    "best_streak": 1,
+    "quizzes_completed": 16,
+    "total_questions_answered": 80,
+    "correct_answers": 13,
+    "badges_earned": [
+      {
+        "name": "Lightning Fast",
+        "icon": "\u26a1",
+        "description": "Complete quiz in under 30 seconds",
+        "points": 75,
+        "category": "speed"
+      },
+      {
+        "name": "Quick Thinker",
+        "icon": "\ud83c\udfc3",
+        "description": "Complete quiz in under 1 minute",
+        "points": 50,
+        "category": "speed"
+      },
+      {
+        "name": "Speedy",
+        "icon": "\ud83d\ude80",
+        "description": "Complete quiz in under 2 minutes",
+        "points": 25,
+        "category": "speed"
+      },
+      {
+        "name": "First Steps",
+        "icon": "\ud83c\udfaf",
+        "description": "Complete your first quiz",
+        "points": 50,
+        "category": "special"
+      }
+    ],
+    "quiz_history": [],
+    "subject_stats": {
+      "General Knowledge": {
+        "quizzes": 16,
+        "best_accuracy": 40.0,
+        "total_points": 1330
+      }
+    },
+    "last_activity": "2025-08-14",
+    "rank": "Advanced Scholar \u2b50",
+    "achievements": []
+  }
+}

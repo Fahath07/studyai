@@ -1,0 +1,18 @@
+{
+  "cc71a40bd38e58c1b637dc254f35e595": {
+    "user_id": "cc71a40bd38e58c1b637dc254f35e595",
+    "username": "fahath",
+    "email": "fahathalsalam@gmail.com",
+    "full_name": "FAHATH AL SALAM ",
+    "password_hash": "95dcb5252ad1bac54b0ce49c7d87e6842005112648b1568b193a2257c5b4b706",
+    "salt": "87832484a9cfd3fb732f8db9df286559f1bc67a2bf901ec43b46acedab83f600",
+    "created_at": "2025-08-14T11:09:32.992856",
+    "last_login": "2025-08-14T11:09:56.772285",
+    "is_active": true,
+    "preferences": {
+      "theme": "dark",
+      "default_ai_provider": "auto",
+      "notifications": true
+    }
+  }
+}
