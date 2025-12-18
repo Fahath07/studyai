@@ -1,0 +1,50 @@
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Streamlit cache
+.streamlit/
+
+# Test files
+test_*.py
+test_*.txt
+test_*.pdf
+test_*.docx
+
+# User data
+sessions.json
+users.json
+user_progress.json
+leaderboard.json
+
+# Temporary files
+*.tmp
+*.temp
+
+# Downloaded files
+(b);_files/
+*.download
+
+# Large image files
+*.png.png
