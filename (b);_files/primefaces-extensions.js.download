@@ -1,0 +1,279 @@
+/**
+ * @namespace The PrimeFaces Extensions root namespace.
+ */
+PrimeFacesExt = {
+
+    /**
+     * Change the theme and if using OmniFaces CombinedResourceHandler we need to create the DOM node
+     * and append it to the body since it will not exist. Appending to the body will make sure that the
+     * theme that's switched to will be loaded last and thereby override existing rules.
+     * @param {string} theme the theme to switch to.
+     */
+    changeTheme: function (theme) {
+        var themeLink = PrimeFaces.getThemeLink();
+        if (!themeLink || themeLink.length === 0) {
+            var ext = PrimeFacesExt.getResourceUrlExtension();
+            var href = PrimeFaces.settings.contextPath + '/javax.faces.resource/theme.css.' + ext + '?ln=primefaces-' + theme + '&' + PrimeFacesExt.VERSION;
+            $('body').append('<link rel="stylesheet" type="text/css" href="' + href + '" />');
+        } else {
+            PrimeFaces.changeTheme(theme);
+        }
+    },
+
+    /**
+     * Gets the URL extensions of current included resources. For example: jsf or
+     * xhtml. This should only be used if extensions mapping is used.
+     *
+     * @returns {string} The URL extension.
+     */
+    getResourceUrlExtension: function () {
+        if (!PrimeFacesExt.RESOURCE_URL_EXTENSION) {
+            var scriptURI = PrimeFacesExt.getResourceScriptURI();
+            var scriptName = PrimeFacesExt.getResourceScriptName(scriptURI);
+            PrimeFacesExt.RESOURCE_URL_EXTENSION = RegExp(scriptName + '.([^?]*)').exec(scriptURI)[1];
+        }
+
+        return PrimeFacesExt.RESOURCE_URL_EXTENSION;
+    },
+
+    /**
+     * For a URI parses out the name of the script like primefaces-extensions.js
+     *
+     * @param {string} the URI of the script.
+     * @returns {string} The script name.
+     */
+    getResourceScriptName: function (scriptURI) {
+        if (!PrimeFacesExt.SCRIPT_NAME) {
+            // find script...normal is '/core.js' and portlets are '=core.js'
+            var scriptRegex = new RegExp('\/?' + PrimeFaces.RESOURCE_IDENTIFIER + '(\/|=)(.*?)\.js');
+
+            // find script to replace e.g. 'core.js'
+            PrimeFacesExt.SCRIPT_NAME = scriptRegex.exec(scriptURI)[2] + '.js';
+        }
+
+        return PrimeFacesExt.SCRIPT_NAME;
+    },
+
+    /**
+     * Gets the resource URI of any Javascript JS file served as a JSF resource.
+     *
+     * @author Thomas Andraschko
+     * @returns {string} The resource URI.
+     */
+    getResourceScriptURI: function () {
+        if (!PrimeFacesExt.SCRIPT_URI) {
+            // GitHub #601 maybe using OmniFaces CombinedResourceHandler
+            PrimeFacesExt.SCRIPT_URI =
+                $('script[src*="/' + PrimeFaces.RESOURCE_IDENTIFIER + '/"]').first().attr('src');
+
+            // portlet
+            if (!PrimeFacesExt.SCRIPT_URI) {
+                PrimeFacesExt.SCRIPT_URI =
+                    $('script[src*="' + PrimeFaces.RESOURCE_IDENTIFIER + '="]').first().attr('src');
+            }
+        }
+        return PrimeFacesExt.SCRIPT_URI;
+    },
+
+    /**
+     * Configures component specific localized text by given widget name and
+     * locale in configuration object.
+     *
+     * @author Oleg Varaksin
+     * @param {string}
+     *        widgetName The name of the widget. For example: 'TimePicker'.
+     * @param {object}
+     *        cfg Configuration object as key, value pair. This object should
+     *        keep current locale in cfg.locale.
+     * @returns {object} cfg Configuration object with updated localized text (if
+     *          any text to given locale were found).
+     */
+    configureLocale: function (widgetName, cfg) {
+        if (PrimeFacesExt.locales && PrimeFacesExt.locales[widgetName] && cfg.locale) {
+            var localeSettings = PrimeFacesExt.locales[widgetName][cfg.locale];
+            if (localeSettings) {
+                for (var setting in localeSettings) {
+                    if (localeSettings.hasOwnProperty(setting)) {
+                        cfg[setting] = localeSettings[setting];
+                    }
+                }
+            }
+        }
+
+        return cfg;
+    },
+
+    /**
+     * The name of the PrimeFaces Extensions resource library.
+     *
+     * @author Thomas Andraschko
+     * @type {string}
+     * @constant
+     */
+    RESOURCE_LIBRARY: 'primefaces-extensions',
+
+    VERSION: '14.0.4'
+};
+
+/**
+ * @namespace Namespace for behaviors.
+ */
+PrimeFacesExt.behavior = {};
+
+/**
+ * @namespace Namespace for widgets.
+ */
+PrimeFacesExt.widget = {};
+
+/**
+ * @namespace Namespace for localization.
+ */
+PrimeFacesExt.locales = {};
+
+/**
+ * @namespace Namespaces for components with localized text.
+ */
+PrimeFacesExt.locales.TimeAgo = {};
+PrimeFacesExt.locales.TimePicker = {};
+
+/**
+ * JavaScript behavior.
+ *
+ * @author Thomas Andraschko
+ * @constructor
+ */
+PrimeFacesExt.behavior.Javascript = function (cfg, ext) {
+
+    var params = null;
+    if (ext) {
+        params = ext.params;
+    }
+
+    return cfg.execute.call(this, cfg.source, cfg.event, params, ext);
+};
+;if (!PrimeFacesExt.timers) {
+
+    /**
+     * Customized timer functions using web-workers which do not get throttled by browsers when inactive.
+     * All the following conditions need to be true in order for the 1-minute throttling to happen :
+     *
+     * Page has been hidden for more than 5 minutes.
+     * Chain count while applying setTimeout() / setInterval() methods is greater than 5.
+     * Page has not made any sound using any of the sound-making APIs.
+     * WebRTC is not in use.
+     *
+     * @namespace
+     */
+    PrimeFacesExt.timers = {
+        createWorker: function () {
+            var containerFunction = function () {
+                var idMap = {};
+
+                self.onmessage = function (e) {
+                    if (e.data.type === 'setInterval') {
+                        idMap[e.data.id] = setInterval(function () {
+                            self.postMessage({
+                                type: 'fire',
+                                id: e.data.id
+                            });
+                        }, e.data.delay);
+                    } else if (e.data.type === 'clearInterval') {
+                        clearInterval(idMap[e.data.id]);
+                        delete idMap[e.data.id];
+                    } else if (e.data.type === 'setTimeout') {
+                        idMap[e.data.id] = setTimeout(function () {
+                            self.postMessage({
+                                type: 'fire',
+                                id: e.data.id
+                            });
+                            // remove reference to this timeout after is finished
+                            delete idMap[e.data.id];
+                        }, e.data.delay);
+                    } else if (e.data.type === 'clearCallback') {
+                        clearTimeout(idMap[e.data.id]);
+                        delete idMap[e.data.id];
+                    }
+                };
+            };
+
+            return new Worker(
+                URL.createObjectURL(
+                    new Blob(
+                        [
+                            '(',
+                            containerFunction.toString(),
+                            ')();'
+                        ],
+                        {type: 'application/javascript'}
+                    )
+                )
+            );
+        },
+
+        generateId: function () {
+            // use an empty setTimeout to generate a real global id
+            return window.setTimeout(function() {}, 0);
+        },
+
+        setInterval: function (callback, delay) {
+            var intervalId = this.generateId();
+
+            this.idToCallback[intervalId] = callback;
+            this.worker.postMessage({
+                type: 'setInterval',
+                delay: delay,
+                id: intervalId
+            });
+
+            return intervalId;
+        },
+
+        clearInterval: function (intervalId) {
+            this.worker.postMessage({
+                type: 'clearInterval',
+                id: intervalId
+            });
+
+            delete this.idToCallback[intervalId];
+        },
+
+        setTimeout: function (callback, delay) {
+            var intervalId = this.generateId();
+            var $this = this;
+
+            this.idToCallback[intervalId] = function () {
+                callback();
+                delete $this.idToCallback[intervalId];
+            };
+
+            this.worker.postMessage({
+                type: 'setTimeout',
+                delay: delay,
+                id: intervalId
+            });
+
+            return intervalId;
+        },
+
+        clearTimeout: function (intervalId) {
+            this.worker.postMessage({
+                type: 'clearInterval',
+                id: intervalId
+            });
+
+            delete this.idToCallback[intervalId];
+        },
+
+        init: function () {
+            this.worker = this.createWorker();
+            this.idToCallback = {};
+
+            this.worker.onmessage = function (e) {
+                if (e.data.type === 'fire' && PrimeFacesExt.timers.idToCallback[e.data.id] != null) {
+                    PrimeFacesExt.timers.idToCallback[e.data.id]();
+                }
+            };
+        }
+    };
+    PrimeFacesExt.timers.init();
+};

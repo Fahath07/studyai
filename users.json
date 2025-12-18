@@ -14,5 +14,21 @@
       "default_ai_provider": "auto",
       "notifications": true
     }
+  },
+  "4cd3e9bae213d7c2ea52bebb9823398c": {
+    "user_id": "4cd3e9bae213d7c2ea52bebb9823398c",
+    "username": "1122",
+    "email": "fahathalsalam.s2024cse@sece.ac.in",
+    "full_name": "1122",
+    "password_hash": "00220a576956ba4dca713a17966ca95aa2e888611f19da31817a476ab0c3e2ef",
+    "salt": "c555e1d485b8297f68505af8aaa3d617bc5b6b40984eb8cd346f316a2ffe6fe2",
+    "created_at": "2025-09-27T15:21:25.920051",
+    "last_login": "2025-09-27T15:23:58.899507",
+    "is_active": true,
+    "preferences": {
+      "theme": "dark",
+      "default_ai_provider": "auto",
+      "notifications": true
+    }
   }
 }

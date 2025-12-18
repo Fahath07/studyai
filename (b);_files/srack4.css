@@ -1,0 +1,16 @@
+pre,code {
+    display: block;
+    margin: 0;
+    overflow-x: scroll;
+}
+.padtbl td{
+    padding: 5px;
+}
+
+.psel {
+  -webkit-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none; 
+}
+
+

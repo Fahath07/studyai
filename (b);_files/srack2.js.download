@@ -1,0 +1,52 @@
+function hideBtns() {
+            $('#btngrp').hide();
+        }
+        function oncompile() {
+            cs();
+            $('#btngrp').hide();
+
+
+        }
+        function hideCode() {
+            $("#txtCodeTbl").hide();
+        }
+
+        function showSolution() {
+            $("#solndiv").show();
+            $("#hidebtn").show();
+            $("#showbtn").hide();
+        }
+        function hideSolution() {
+            $("#solndiv").hide();
+            $("#showbtn").show();
+            $("#hidebtn").hide();
+        }
+        function showHideSoln(langname) {
+
+            if ($('#currlangsoln').val() === 'soln' + langname) {
+                $('#' + $('#currlangsoln').val()).hide();
+                $('#currlangsoln').val('')
+            } else if ($('#currlangsoln').val() !== '') {
+                $('#' + $('#currlangsoln').val()).hide();
+                $('#soln' + langname).show();
+                $('#currlangsoln').val('soln' + langname)
+            } else {
+                $('#soln' + langname).show();
+                $('#currlangsoln').val('soln' + langname)
+            }
+        }
+        function showStepGuide() {
+            $("#sgdiv").show();
+            $("#hidesgbtn").show();
+            $("#showsgbtn").hide();
+        }
+        function hideStepGuide() {
+            $("#sgdiv").hide();
+            $("#showsgbtn").show();
+            $("#hidesgbtn").hide();
+        }
+
+        function stopExecution() {
+            PF('poll').stop();
+            $("#pbar").hide();
+        }

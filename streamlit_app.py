@@ -1785,6 +1785,13 @@ def display_qa_history():
 
 def main():
     """Main application function."""
+    # StudyMate banner at the top
+    st.markdown('<div style="width:100%;display:flex;justify-content:center;margin-bottom:2rem;">', unsafe_allow_html=True)
+    try:
+        st.image("studymate_banner.png.png", use_container_width=True)
+    except Exception:
+        st.warning("Banner image 'studymate_banner.png.png' not found. Please add the image to your project folder.")
+    st.markdown('</div>', unsafe_allow_html=True)
     # Load environment variables
     load_environment_variables()
 
